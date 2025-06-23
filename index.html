@@ -8,15 +8,17 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container" id="container">
         <img src="images/Title.png" id="title" alt="title">
         <div class="form">
             <form action="">
                 <input type="text" placeholder="Player Name" id="playerName">
             </form>
-            <button id="start-button">Start Quiz!</button>
+            <p id="alert-result"></p>
+            <button id="start-button" onclick="startButton()">Enter Quiz</button>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

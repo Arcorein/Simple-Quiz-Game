@@ -6,12 +6,22 @@
     <title>Quiz Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="getFirstQuestionDisplay()">
     <div class="container">
-        <div class="form">
-            
+        <div class="question">
+            <h2 id="question-display"></h2>
+        </div>
+        <div class="answer-button">
+            <button id="choice1" onclick="answerButton(questionObjectList[indexPicker].choice[0])"></button>
+            <button id="choice2" onclick="answerButton(questionObjectList[indexPicker].choice[1])"></button>
+            <button id="choice3" onclick="answerButton(questionObjectList[indexPicker].choice[2])"></button>
+            <button id="choice4" onclick="answerButton(questionObjectList[indexPicker].choice[3])"></button>
         </div>
     </div>
+    
+    
+    
+    <iframe src="index.html" frameborder="0" style="display: none"></iframe>
     <script src="script.js"></script>
 </body>
 </html>
