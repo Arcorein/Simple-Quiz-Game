@@ -5,7 +5,8 @@ const questionObjectList = []
 
 let questionDisplay;
 let choiceDisplay;
-let indexPicker = 4;
+let indexPicker = 0;
+let getButtonElement = []
 
 const questionList = [
     "What is capital of Japan?",
@@ -79,18 +80,75 @@ function startButton(){
 }
 
 function answerButton(answerChoice){
+    let x;
     let getAnswer = questionObjectList[indexPicker].answer;
-    console.log(getAnswer)
-    console.log(answerChoice)
+    choiceDisplay = questionObjectList[indexPicker].choice;
+    
+
+    
+    
+    
+    
     if(getAnswer == answerChoice){
-        console.log("Benar")
+        
+        for(x in choiceDisplay){
+            
+            if(getAnswer === choiceDisplay[x]){
+                console.log("ini answerChoice = "+answerChoice)
+                console.log("Ini x = "+x)
+                console.log(choiceDisplay[x])
+                
+                getButtonElement[0] = document.getElementById("choice1")
+                getButtonElement[1] = document.getElementById("choice2")
+                getButtonElement[2] = document.getElementById("choice3")
+                getButtonElement[3] = document.getElementById("choice4")
+                console.log(true)
+                getButtonElement[x].style.backgroundColor = "green"
+            } else {
+                console.log(choiceDisplay[x])
+              
+                getButtonElement[0] = document.getElementById("choice1")
+                getButtonElement[1] = document.getElementById("choice2")
+                getButtonElement[2] = document.getElementById("choice3")
+                getButtonElement[3] = document.getElementById("choice4")
+                console.log(false)
+                getButtonElement[x].style.backgroundColor = "red"
+                
+            }
+        }
     } else {
-        console.log("Salah")
+        for(x in choiceDisplay){
+            
+            if(getAnswer === choiceDisplay[x]){
+                
+                getButtonElement[0] = document.getElementById("choice1")
+                getButtonElement[1] = document.getElementById("choice2")
+                getButtonElement[2] = document.getElementById("choice3")
+                getButtonElement[3] = document.getElementById("choice4")
+                
+                getButtonElement[x].style.backgroundColor = "green"
+            } else {
+                console.log(choiceDisplay[x])
+              
+                getButtonElement[0] = document.getElementById("choice1")
+                getButtonElement[1] = document.getElementById("choice2")
+                getButtonElement[2] = document.getElementById("choice3")
+                getButtonElement[3] = document.getElementById("choice4")
+                getButtonElement[x].style.backgroundColor = "red"
+                
+            }
+        }
+        
     }
+    document.getElementById("next-button").innerHTML = '<button onclick="nextButton()" id="nextButton">Next Question</button>';
+    
 
 }
 
 function nextButton(){
+    for(x in getButtonElement){
+        getButtonElement[x].style.backgroundColor = "";
+    }
     indexPicker+=1;
     questionDisplay = questionObjectList[indexPicker].question;
     choiceDisplay = questionObjectList[indexPicker].choice;
@@ -100,4 +158,8 @@ function nextButton(){
     document.getElementById("choice2").textContent = choiceDisplay[1];
     document.getElementById("choice3").textContent = choiceDisplay[2];
     document.getElementById("choice4").textContent = choiceDisplay[3];
+    
+    document.getElementById("nextButton").remove();
+    document.getElementsByTagName("body").style.transition = "all 0.2s";
+    
 }

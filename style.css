@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:fantasy;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.5s;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
     background: linear-gradient(rgb(5, 82, 78), rgba(0, 0, 0, 0.288)),url(images/Background.png);
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 .container {
@@ -38,13 +40,29 @@ img#title {
     width: 100%;
 }
 
+.question {
+    height: 350px;
+    padding-block: 10%;
+    padding-inline: 30px;
+}
+
+.quiz-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 130, 218, 0.182);
+    
+}
+
 h2#question-display {
-    height: 400px;
     text-align: center;
     font-size: 400%;
-    color: rgb(200, 235, 200);
+    color: rgb(255, 255, 255);
     margin-block: 20px;
     text-shadow: 3px 3px 3px black;
+    
 }
 
 input#playerName {
@@ -98,8 +116,8 @@ button#start-button:active{
     border: 3.9px rgb(255, 255, 255) solid;
 }
 
-.answer-button {
-    position: absolute;
+.answer-button, div#next-button {
+    position: static;
     bottom: 0px;
     width: 100%;
     height: 250px;
@@ -107,14 +125,18 @@ button#start-button:active{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: rgba(130, 220, 208, 0.756);
+    background-color: rgb(130, 220, 208);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 20px;
 }
 
-.answer-button button {
-    
+div#next-button {
+    border-radius: 0;
+}
+
+.answer-button button, div#next-button button {
+    cursor: pointer;
     width: 100%;
     border-radius: 20px;
     padding: 20px;
@@ -124,8 +146,10 @@ button#start-button:active{
     color: rgb(39, 44, 44);
     min-height: 40%;
     max-height: 80%;
-    
+    transition: all 0.2s;
 }
+
+
 
 button#choice1 {
     background-color: rgb(211, 203, 131);
@@ -138,4 +162,52 @@ button#choice3 {
 }
 button#choice4 {
     background-color: rgb(241, 131, 131);
+}
+
+.answer-button button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    transform: scale(1.02,1.02);
+}
+
+.answer-button button:active {
+    transform: scale(0.9,0.9);
+}
+
+@media only screen and (max-width:600px){
+    .answer-button {
+        flex-direction: column;
+        height: 300px;
+        padding-block: 50px;
+    }
+
+    .question {
+        height: 100%;
+        padding-block: 50%;
+    }
+
+    h2#question-display {
+        font-size: 300%;
+    }
+
+    div#next-button {
+        height: 150%;
+        
+    }
+
+    div#next-button button {
+        padding-block: 5%;
+        
+        font-size: 18px;
+        min-height: 18px;
+        height: 80px
+    }
+
+
+    .answer-button button{
+        padding-block: 5%;
+        min-height: 60px;
+    }
+
+    
 }
