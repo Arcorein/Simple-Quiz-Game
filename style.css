@@ -41,9 +41,13 @@ img#title {
 }
 
 .question {
-    height: 350px;
-    padding-block: 10%;
+    height: 300px;
+    width: 90%;
+    padding-block: 50px;
     padding-inline: 30px;
+    background-color: rgba(3, 30, 53, 0.762);
+    border-radius: 20px;
+    margin: 25px;
 }
 
 .quiz-container {
@@ -58,7 +62,7 @@ img#title {
 
 h2#question-display {
     text-align: center;
-    font-size: 400%;
+    font-size: 50px;
     color: rgb(255, 255, 255);
     margin-block: 20px;
     text-shadow: 3px 3px 3px black;
@@ -174,6 +178,48 @@ button#choice4 {
     transform: scale(0.9,0.9);
 }
 
+div#display-score {
+    display:none;
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    background-color: rgb(223, 252, 252);
+    z-index: 10;
+    padding: 20px;
+    border-radius: 20px;
+    transition: transform 0.2s;
+    
+}
+
+.display-score-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-score-container h1 {
+    color: rgb(181, 134, 72);
+    font-size: 300%;
+    margin-bottom: 20px;
+    
+}
+
+.display-score-container h3 {
+    color: rgb(78, 73, 10);
+    font-size: 120%;
+    margin-bottom: 10px;
+
+}
+
+.display-score-container p {
+    font-size: 200%;
+    color: rgb(16, 118, 16);
+}
+
 @media only screen and (max-width:600px){
     .answer-button {
         flex-direction: column;
@@ -182,12 +228,13 @@ button#choice4 {
     }
 
     .question {
-        height: 100%;
-        padding-block: 50%;
+        
+        padding-block: 10%;
+        margin-block: 25%;
     }
 
     h2#question-display {
-        font-size: 300%;
+        font-size: 150%;
     }
 
     div#next-button {
@@ -209,5 +256,18 @@ button#choice4 {
         min-height: 60px;
     }
 
+    .display-score-container h1 {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    div#display-score {
+        top: 25%;
+        bottom: 25%;
+    }
+
+    .display-score-container h3 {
+        font-size: 100%;
+    }
     
 }
