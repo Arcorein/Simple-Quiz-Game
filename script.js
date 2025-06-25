@@ -28,6 +28,8 @@ const answerList = [
     ["Adobe Photoshop", "Mozilla Firefox","File Explorer","Minecraft"]
 ];
 
+//template untuk question Object
+
 function QuestionTemplate(question,choice,answer){
     this.question = question;
     this.choice = choice;
@@ -35,11 +37,15 @@ function QuestionTemplate(question,choice,answer){
        
 }
 
+//menginisiasi player object
+
 const player = {
     name: localStorage.getItem("playerName"),
     score: localStorage.getItem("score")
 };
 
+
+//menginisiasi 
 const question1 = new QuestionTemplate(questionList[0],answerList[0],answerList[0][3]);
 const question2 = new QuestionTemplate(questionList[1],answerList[1],answerList[1][0]);
 const question3 = new QuestionTemplate(questionList[2],answerList[2],answerList[2][1]);
@@ -48,6 +54,8 @@ const question5 = new QuestionTemplate(questionList[4],answerList[4],answerList[
 
 questionObjectList.push(question1,question2,question3,question4,question5)
 
+
+//Menampilkan Soal pertama dengan onload pada quiz.html
 function getFirstQuestionDisplay(){
 
     
@@ -78,46 +86,41 @@ function answerButton(answerChoice){
     choiceDisplay = questionObjectList[indexPicker].choice;
     
     if(getAnswer == answerChoice){ 
-        playerScore+=1;  
+
+        /*Mengecek jika nextButton ada, maka score tidak akan bertambah meskipun 
+        anwerButton diclick terus menerus
+        */
+        if(!document.getElementById("nextButton")){
+            playerScore+=1;
+        }
+
+        getButtonElement[0] = document.getElementById("choice1")
+        getButtonElement[1] = document.getElementById("choice2")
+        getButtonElement[2] = document.getElementById("choice3")
+        getButtonElement[3] = document.getElementById("choice4")
+        
+        //Mengganti warna answerButton
+        //jika benar maka berwarna hijau
+        //jika salah maka berwarna merah
         for(x in choiceDisplay){   
             if(getAnswer === choiceDisplay[x]){
-                
-                getButtonElement[0] = document.getElementById("choice1")
-                getButtonElement[1] = document.getElementById("choice2")
-                getButtonElement[2] = document.getElementById("choice3")
-                getButtonElement[3] = document.getElementById("choice4")
-                
                 getButtonElement[x].style.backgroundColor = "green"
             } else {
-                
-            
-                getButtonElement[0] = document.getElementById("choice1")
-                getButtonElement[1] = document.getElementById("choice2")
-                getButtonElement[2] = document.getElementById("choice3")
-                getButtonElement[3] = document.getElementById("choice4")
-                
                 getButtonElement[x].style.backgroundColor = "red"  
             }
         }
     } else {
         for(x in choiceDisplay){   
             if(getAnswer === choiceDisplay[x]){
-                getButtonElement[0] = document.getElementById("choice1")
-                getButtonElement[1] = document.getElementById("choice2")
-                getButtonElement[2] = document.getElementById("choice3")
-                getButtonElement[3] = document.getElementById("choice4")   
                 getButtonElement[x].style.backgroundColor = "green"
             } else {
-                
-
-                getButtonElement[0] = document.getElementById("choice1")
-                getButtonElement[1] = document.getElementById("choice2")
-                getButtonElement[2] = document.getElementById("choice3")
-                getButtonElement[3] = document.getElementById("choice4")
                 getButtonElement[x].style.backgroundColor = "red"  
             }
         }  
     }
+
+    //mengecek jika pertanyaan terakhir, maka yang keluar adalah "next question"
+    //jika sudah pertanyaan terakhir, maka yang keluar adalah "Finish Quiz"
     if(indexPicker <= questionObjectList.length-2){
         document.getElementById("next-button").innerHTML = '<button onclick="nextButton()" id="nextButton">Next Question</button>';  
     } else {
@@ -126,7 +129,8 @@ function answerButton(answerChoice){
 }
 
 function nextButton(){
-    
+    //Mengecek jika belum soal terakhir, maka akan berlanjut ke soal selanjutnya
+    //jika sudah soal terakhir, maka akan memanggil fungsi displayScoreButton()
     indexPicker+=1;
     if(indexPicker <= questionObjectList.length-1){
         for(x in getButtonElement){
@@ -149,12 +153,15 @@ function nextButton(){
 }
 
 function displayScoreButton(){
+    //menyimpan final score ke local storage, yang nanti akan dimasukan ke player object
     localStorage.setItem("score",playerScore)
+
+    //mengarahkan ke result.html page
     window.location.href = "result.html"
 }
 
 function displayScore(){
-    console.log(player.score)
+    //menampilkan nama dan score palyer
     document.getElementById("player-score").innerHTML = `${player.score}/${questionObjectList.length}`;
     document.getElementById("player-name").innerHTML = player.name;
     
