@@ -82,10 +82,10 @@ input#playerName {
 
 p#alert-result {
     text-align: center;
-    color: red;
+    color: rgb(255, 36, 36);
     font-size: 12px;
     height: 15px;
-    text-shadow: 1px 1px 5px white;
+    text-shadow: 2px 2px 1px rgb(80, 63, 63);
 }
 
 button#start-button {
@@ -178,46 +178,84 @@ button#choice4 {
     transform: scale(0.9,0.9);
 }
 
-div#display-score {
-    display:none;
-    position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 10%;
-    right: 10%;
-    background-color: rgb(223, 252, 252);
-    z-index: 10;
-    padding: 20px;
-    border-radius: 20px;
-    transition: transform 0.2s;
-    
-}
-
-.display-score-container {
-    height: 100%;
+.display-score {
+    max-width: 800px;
+    min-width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(223, 252, 252);
+    
+    padding: 80px 10%;
+    border-radius: 20px;
+    transition: transform 0.2s;
+    background-color: rgba(3, 30, 53, 0.762);
+    
 }
 
-.display-score-container h1 {
-    color: rgb(181, 134, 72);
+.display-score-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 130, 218, 0.182);
+}
+
+.display-score h1 {
+    text-align: center;
+    color: rgb(235, 210, 177);
     font-size: 300%;
     margin-bottom: 20px;
     
 }
 
-.display-score-container h3 {
-    color: rgb(78, 73, 10);
+.display-score h3 {
+    text-align: center;
+    color: rgb(225, 216, 86);
     font-size: 120%;
     margin-bottom: 10px;
 
 }
 
-.display-score-container p {
+.display-score p {
+    text-align: center;
     font-size: 200%;
-    color: rgb(16, 118, 16);
+    color: rgb(244, 254, 244);
+    font-weight: bold;
+}
+
+.display-score img {
+    margin-bottom: 30px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+span#player-name {
+    color: greenyellow;
+}
+
+.display-score-container button{
+    margin-top: 20px;
+    background-color: rgb(237, 159, 159);
+    padding: 15px 30px;
+    width: 25%;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px black solid;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+.display-score-container button:hover{
+    transform: scale(1.02,1.02);
+    background-color: rgb(228, 195, 195);
+    cursor: pointer;
+}
+.display-score-container button:active{
+    transform: scale(0.9,0.9);
+    background-color: rgb(203, 110, 110);
+    cursor: pointer;
 }
 
 @media only screen and (max-width:600px){
@@ -256,18 +294,34 @@ div#display-score {
         min-height: 60px;
     }
 
-    .display-score-container h1 {
-        font-size: 30px;
-        margin-bottom: 50px;
+   .display-score {
+        margin-inline: 20%
+        
+   }
+
+   .display-score h1 {
+        font-size: 200%;
+   }
+
+   .display-score h3 {
+        text-align: center;
+        color: rgb(225, 216, 86);
+        font-size: 120%;
+        margin-bottom: 10px;
+
     }
 
-    div#display-score {
-        top: 25%;
-        bottom: 25%;
-    }
-
-    .display-score-container h3 {
-        font-size: 100%;
+    .display-score p {
+        text-align: center;
+        font-size: 150%;
+        color: rgb(244, 254, 244);
+        font-weight: bold;
     }
     
+    .display-score-container button {
+        max-width: 350px;
+        width: 90%;
+        margin: 20px;
+        
+    }
 }

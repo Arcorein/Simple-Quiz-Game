@@ -6,6 +6,7 @@ let questionDisplay;
 let choiceDisplay;
 let indexPicker = 0;
 let getButtonElement = []
+let playerScore = 0
 
 const questionList = [
     "What is capital of Japan?",
@@ -36,7 +37,7 @@ function QuestionTemplate(question,choice,answer){
 
 const player = {
     name: localStorage.getItem("playerName"),
-    score: 0
+    score: localStorage.getItem("score")
 };
 
 const question1 = new QuestionTemplate(questionList[0],answerList[0],answerList[0][3]);
@@ -77,26 +78,24 @@ function answerButton(answerChoice){
     choiceDisplay = questionObjectList[indexPicker].choice;
     
     if(getAnswer == answerChoice){ 
-        player.score+=1;  
+        playerScore+=1;  
         for(x in choiceDisplay){   
             if(getAnswer === choiceDisplay[x]){
-                console.log("ini answerChoice = "+answerChoice)
-                console.log("Ini x = "+x)
-                console.log(choiceDisplay[x])  
+                
                 getButtonElement[0] = document.getElementById("choice1")
                 getButtonElement[1] = document.getElementById("choice2")
                 getButtonElement[2] = document.getElementById("choice3")
                 getButtonElement[3] = document.getElementById("choice4")
-                console.log(true)
+                
                 getButtonElement[x].style.backgroundColor = "green"
             } else {
-                console.log(choiceDisplay[x])
+                
             
                 getButtonElement[0] = document.getElementById("choice1")
                 getButtonElement[1] = document.getElementById("choice2")
                 getButtonElement[2] = document.getElementById("choice3")
                 getButtonElement[3] = document.getElementById("choice4")
-                console.log(false)
+                
                 getButtonElement[x].style.backgroundColor = "red"  
             }
         }
@@ -109,7 +108,7 @@ function answerButton(answerChoice){
                 getButtonElement[3] = document.getElementById("choice4")   
                 getButtonElement[x].style.backgroundColor = "green"
             } else {
-                console.log(choiceDisplay[x])
+                
 
                 getButtonElement[0] = document.getElementById("choice1")
                 getButtonElement[1] = document.getElementById("choice2")
@@ -127,6 +126,7 @@ function answerButton(answerChoice){
 }
 
 function nextButton(){
+    
     indexPicker+=1;
     if(indexPicker <= questionObjectList.length-1){
         for(x in getButtonElement){
@@ -143,16 +143,23 @@ function nextButton(){
         
         document.getElementById("nextButton").remove();
         
-    }else{
-        displayScore()
+    } else {
+        displayScoreButton()
     }
 }
 
+function displayScoreButton(){
+    localStorage.setItem("score",playerScore)
+    window.location.href = "result.html"
+}
+
 function displayScore(){
-    let playerScore = (player.score/questionObjectList.length)*100;
-    console.log("terpanggil")
-    console.log(player.name);
-    document.getElementById("display-score").style.display = "block"
+    console.log(player.score)
+    document.getElementById("player-score").innerHTML = `${player.score}/${questionObjectList.length}`;
     document.getElementById("player-name").innerHTML = player.name;
-    document.getElementById("player-score").innerHTML =playerScore;
+    
+}
+
+function buttonBackToMenu(){
+    window.location.href = "index.html"
 }
