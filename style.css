@@ -42,13 +42,14 @@ img#title {
 }
 
 .question {
-    height: 300px;
+    height: 1fr;
     width: 90%;
     padding-block: 50px;
     padding-inline: 30px;
     background-color: rgba(3, 30, 53, 0.762);
     border-radius: 20px;
     margin: 25px;
+    margin-block: 30px;
 }
 
 .quiz-container {
@@ -121,24 +122,24 @@ button#start-button:active{
     border: 3.9px rgb(255, 255, 255) solid;
 }
 
-.answer-button, div#next-button {
+.answer-button {
     position: static;
-    bottom: 0px;
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     gap: 10px;
     background-color: rgb(130, 220, 208);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
 div#next-button {
-    border-radius: 0;
+    grid-column: 1 / span 4;
 }
+
+
+
+
 
 .answer-button button, div#next-button button {
     cursor: pointer;
@@ -149,8 +150,7 @@ div#next-button {
     font-weight: bolder;
     font-size: 20px;
     color: rgb(39, 44, 44);
-    min-height: 40%;
-    max-height: 80%;
+    
     transition: all 0.2s;
 }
 
@@ -261,15 +261,15 @@ span#player-name {
 
 @media only screen and (max-width:600px){
     .answer-button {
+        display: flex;
         flex-direction: column;
-        height: 300px;
-        padding-block: 50px;
     }
 
     .question {
-        
+        height: 1fr;
         padding-block: 10%;
-        margin-block: 25%;
+        margin-block: 20%;
+
     }
 
     h2#question-display {
@@ -282,17 +282,15 @@ span#player-name {
     }
 
     div#next-button button {
-        padding-block: 5%;
         
         font-size: 18px;
-        min-height: 18px;
-        height: 80px
     }
 
 
     .answer-button button{
         padding-block: 5%;
         min-height: 60px;
+        font-size: 18px;
     }
 
    .display-score {

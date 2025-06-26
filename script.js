@@ -5,7 +5,7 @@ const questionObjectList = []
 let questionDisplay;
 let choiceDisplay;
 let indexPicker = 0;
-let getButtonElement = []
+const getButtonElement = []
 let playerScore = 0
 
 const questionList = [
@@ -84,7 +84,12 @@ function answerButton(answerChoice){
     let x;
     let getAnswer = questionObjectList[indexPicker].answer;
     choiceDisplay = questionObjectList[indexPicker].choice;
-    
+
+    getButtonElement[0] = document.getElementById("choice1")
+    getButtonElement[1] = document.getElementById("choice2")
+    getButtonElement[2] = document.getElementById("choice3")
+    getButtonElement[3] = document.getElementById("choice4")
+
     if(getAnswer == answerChoice){ 
 
         /*Mengecek jika nextButton ada, maka score tidak akan bertambah meskipun 
@@ -94,10 +99,7 @@ function answerButton(answerChoice){
             playerScore+=1;
         }
 
-        getButtonElement[0] = document.getElementById("choice1")
-        getButtonElement[1] = document.getElementById("choice2")
-        getButtonElement[2] = document.getElementById("choice3")
-        getButtonElement[3] = document.getElementById("choice4")
+        
         
         //Mengganti warna answerButton
         //jika benar maka berwarna hijau
@@ -133,6 +135,8 @@ function nextButton(){
     //jika sudah soal terakhir, maka akan memanggil fungsi displayScoreButton()
     indexPicker+=1;
     if(indexPicker <= questionObjectList.length-1){
+
+        //Mengembalikan answerButton ke warna semula
         for(x in getButtonElement){
             getButtonElement[x].style.backgroundColor = "";
         }
