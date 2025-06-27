@@ -9,11 +9,16 @@ const getButtonElement = []
 let playerScore = 0
 
 const questionList = [
-    "What is capital of Japan?",
-    "What the value of x according to this equation? 3(x-2) = x+6",
-    "What HTML is stand for?",
-    "What the biggest planet on solar system?",
-    "Wich one is Internet Browser?"
+    "Apa nama ibukota Jepang?",
+    "Berapa penyelesaian untuk persamaan ini? 3(x-2) = x+6",
+    "Apa Kepanjangan dari HTML?",
+    "Apa nama planet terbesar di tata Surya?",
+    "Yang mana kah yang termasuk Internet Browser?",
+    "Siapakah penemu bola lampu pijar?",
+    "Apa nama samudra terbesar di dunia?",
+    "Berapa jumlah benua di dunia?",
+    "Negara manakah yang dikenal sebagai 'Negeri Matahari Terbit'?",
+    "lanet manakah yang dikenal sebagai 'Planet Merah'?",
 ];
 
 const answerList = [
@@ -25,7 +30,12 @@ const answerList = [
      "Hyper Transfer Media Link"   
     ],
     ["Uranus","Neptunus","Yupiter","Mars"],
-    ["Adobe Photoshop", "Mozilla Firefox","File Explorer","Minecraft"]
+    ["Adobe Photoshop", "Mozilla Firefox","File Explorer","Minecraft"],
+    ["Nikola Tesla","Thomas Edison","Alexander Graham Bell", "Marie Curie"],
+    ["Samudra Atlantik","Samudra Hindia","Samudra Arktik","Samudra Pasifik"],
+    ["5","6","7","8"],
+    ["Tiongkok","Korea Selatan","Jepang","Vietnam"],
+    ["Venus","Mars","Jupiter","Saturnus"]
 ];
 
 //template untuk question Object
@@ -51,8 +61,13 @@ const question2 = new QuestionTemplate(questionList[1],answerList[1],answerList[
 const question3 = new QuestionTemplate(questionList[2],answerList[2],answerList[2][1]);
 const question4 = new QuestionTemplate(questionList[3],answerList[3],answerList[3][2]);
 const question5 = new QuestionTemplate(questionList[4],answerList[4],answerList[4][1]);
+const question6 = new QuestionTemplate(questionList[5],answerList[5],answerList[5][1]);
+const question7 = new QuestionTemplate(questionList[6],answerList[6],answerList[6][3]);
+const question8 = new QuestionTemplate(questionList[7],answerList[7],answerList[7][2]);
+const question9 = new QuestionTemplate(questionList[8],answerList[8],answerList[8][2]);
+const question10 = new QuestionTemplate(questionList[9],answerList[9],answerList[9][1]);
 
-questionObjectList.push(question1,question2,question3,question4,question5)
+questionObjectList.push(question1,question2,question3,question4,question5,question6,question7,question8,question9,question10)
 
 
 //Menampilkan Soal pertama dengan onload pada quiz.html
@@ -168,6 +183,16 @@ function displayScore(){
     //menampilkan nama dan score palyer
     document.getElementById("player-score").innerHTML = `${player.score}/${questionObjectList.length}`;
     document.getElementById("player-name").innerHTML = player.name;
+    if(player.score <= 6){
+        document.getElementById("finish-messages").textContent = "Better luck next Time"
+    }
+
+    else if (player.score > 6 && player.score <= 8){
+        document.getElementById("finish-messages").textContent = "You did so well!"
+    }
+    else{
+        document.getElementById("finish-messages").textContent = "You are Genius!"
+    }
     
 }
 
