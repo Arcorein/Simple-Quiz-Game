@@ -29,7 +29,9 @@ html, body {
 
 
 img#title {
+    position: static;
     width: 300px;
+    top: 100px;
 }
 
 .form {
@@ -78,6 +80,7 @@ input#playerName {
     border-radius: 10px;
     border: 2px rgb(93, 132, 7) solid;
     margin-block: 20px;
+    margin-top: 2px;
 
 
 }
@@ -123,6 +126,7 @@ button#start-button:active{
 }
 
 .answer-button {
+    height: 40%;
     position: static;
     width: 90%;
     display: grid;
@@ -259,6 +263,9 @@ span#player-name {
     cursor: pointer;
 }
 
+.subject {
+    justify-content: flex-start;
+}
 
 div#button-subject {
     display: grid;
@@ -280,6 +287,13 @@ div#button-subject button{
 div#button-subject button:hover{
     transform: scale(1.05,1.05);
     cursor: pointer;
+}
+
+h2#subject-choose {
+    color: aliceblue;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px black;
 }
 
 

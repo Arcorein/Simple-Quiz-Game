@@ -167,11 +167,11 @@ function displayScore(){
     //menampilkan nama dan score palyer
     document.getElementById("player-score").innerHTML = `${player.score}/${questionObjectList[subjectChoice]["questions"].length}`;
     document.getElementById("player-name").innerHTML = player.name;
-    if(player.score <= 6){
+    if(player.score <= 2){
         document.getElementById("finish-messages").textContent = "Better luck next Time"
     }
 
-    else if (player.score > 6 && player.score <= 8){
+    else if (player.score > 2 && player.score <= 4){
         document.getElementById("finish-messages").textContent = "You did so well!"
     }
     else{
