@@ -14,10 +14,10 @@
         </div>
 
         <div class="answer-button">
-            <button id="choice1" onclick="answerButton(questionObjectList[indexPicker].choice[0])"></button>
-            <button id="choice2" onclick="answerButton(questionObjectList[indexPicker].choice[1])"></button>
-            <button id="choice3" onclick="answerButton(questionObjectList[indexPicker].choice[2])"></button>
-            <button id="choice4" onclick="answerButton(questionObjectList[indexPicker].choice[3])"></button>
+            <button id="choice1" onclick="answerButton(questionObjectList[subjectChoice]['questions'][indexPicker].choice[0])"></button>
+            <button id="choice2" onclick="answerButton(questionObjectList[subjectChoice]['questions'][indexPicker].choice[1])"></button>
+            <button id="choice3" onclick="answerButton(questionObjectList[subjectChoice]['questions'][indexPicker].choice[2])"></button>
+            <button id="choice4" onclick="answerButton(questionObjectList[subjectChoice]['questions'][indexPicker].choice[3])"></button>
             <div id="next-button">
             
             </div>   
@@ -30,6 +30,8 @@
     
     
     <iframe src="index.html" frameborder="0" style="display: none"></iframe>
+    <script src="questions.js"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>

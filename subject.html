@@ -6,16 +6,15 @@
     <title>Quiz Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="subjectDisplay()">
     
     <div class="container" id="container">
         <img src="images/Title.png" id="title" alt="title">
         <div class="form">
-            <form action="">
-                <input type="text" placeholder="Player Name" id="playerName">
-            </form>
-            <p id="alert-result"></p>
-            <button id="start-button" onclick="startButton()">Enter Quiz</button>
+            <div id="button-subject">
+                
+            </div>
+            
         </div>
     </div>
     <script src="questions.js"></script>
