@@ -32,25 +32,26 @@ function QuestionSubjectList(subject,questions){
     this.questions = questions;
 }
 
-function QuestionTemplate(question,choice,answer){
+function QuestionTemplate(question,choice,answer,queue){
     this.question = question;
     this.choice = choice;
     this.answer = answer;
+    this.queue = queue
        
 }
 
-const question1 = new QuestionTemplate(questionList[0],answerList[0],answerList[0][0]);
-const question2 = new QuestionTemplate(questionList[1],answerList[1],answerList[1][1]);
-const question3 = new QuestionTemplate(questionList[2],answerList[2],answerList[2][1]);
-const question4 = new QuestionTemplate(questionList[3],answerList[3],answerList[3][0]);
-const question5 = new QuestionTemplate(questionList[4],answerList[4],answerList[4][3]);
+const question1 = new QuestionTemplate(questionList[0],answerList[0],answerList[0][0],1);
+const question2 = new QuestionTemplate(questionList[1],answerList[1],answerList[1][1],2);
+const question3 = new QuestionTemplate(questionList[2],answerList[2],answerList[2][1],3);
+const question4 = new QuestionTemplate(questionList[3],answerList[3],answerList[3][0],4);
+const question5 = new QuestionTemplate(questionList[4],answerList[4],answerList[4][3],5);
 
 
-const question6 = new QuestionTemplate(questionList[5],answerList[5],answerList[5][1]);
-const question7 = new QuestionTemplate(questionList[6],answerList[6],answerList[6][3]);
-const question8 = new QuestionTemplate(questionList[7],answerList[7],answerList[7][2]);
-const question9 = new QuestionTemplate(questionList[8],answerList[8],answerList[8][2]);
-const question10 = new QuestionTemplate(questionList[9],answerList[9],answerList[9][1]);
+const question6 = new QuestionTemplate(questionList[5],answerList[5],answerList[5][1],1);
+const question7 = new QuestionTemplate(questionList[6],answerList[6],answerList[6][3],2);
+const question8 = new QuestionTemplate(questionList[7],answerList[7],answerList[7][2],3);
+const question9 = new QuestionTemplate(questionList[8],answerList[8],answerList[8][2],4);
+const question10 = new QuestionTemplate(questionList[9],answerList[9],answerList[9][1],5);
 
 const questionObjectList1 = [];
 const questionObjectList2 = [];

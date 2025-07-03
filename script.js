@@ -26,6 +26,20 @@ const player = {
 //menginisiasi 
 
 
+function getRandomQuestionQueue(){
+
+    subjectChoice = localStorage.getItem("subjectChoice")
+
+    const randomQuestionQueue = questionObjectList[subjectChoice]["questions"].sort((question1,question2) => {
+        question1.queue*=Math.floor(Math.random()*10)
+        question2.queue*=Math.floor(Math.random()*10)
+        return question1.queue-question2.queue
+    })
+    return randomQuestionQueue
+   
+}
+
+
 
 //Menampilkan Soal pertama dengan onload pada quiz.html
 
@@ -53,9 +67,12 @@ function getFirstQuestionDisplay(){
 
     console.log("ini SubjectChoice getFirstQuestionDisplay: "+subjectChoice);
     
-    questionDisplay = questionObjectList[subjectChoice]["questions"][indexPicker].question;
-    choiceDisplay = questionObjectList[subjectChoice]["questions"][indexPicker].choice;
+    questionDisplay = getRandomQuestionQueue()[indexPicker].question;
+    choiceDisplay = getRandomQuestionQueue()[indexPicker].choice;
     console.log(questionDisplay);
+    
+    
+    
     document.getElementById("question-display").textContent = questionDisplay;
     document.getElementById("choice1").textContent = choiceDisplay[0];
     document.getElementById("choice2").textContent = choiceDisplay[1];
@@ -164,14 +181,16 @@ function displayScore(){
 
     subjectChoice = localStorage.getItem("subjectChoice")
 
+    let questionsLength = questionObjectList[subjectChoice]["questions"].length
+
     //menampilkan nama dan score palyer
-    document.getElementById("player-score").innerHTML = `${player.score}/${questionObjectList[subjectChoice]["questions"].length}`;
+    document.getElementById("player-score").innerHTML = `${player.score}/${questionsLength}`;
     document.getElementById("player-name").innerHTML = player.name;
-    if(player.score <= 2){
+    if(player.score <= questionsLength/2){
         document.getElementById("finish-messages").textContent = "Better luck next Time"
     }
 
-    else if (player.score > 2 && player.score <= 4){
+    else if (player.score > questionsLength/2 && player.score <= questionsLength*0.8){
         document.getElementById("finish-messages").textContent = "You did so well!"
     }
     else{
@@ -183,3 +202,4 @@ function displayScore(){
 function buttonBackToMenu(){
     window.location.href = "index.html"
 }
+
